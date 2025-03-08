@@ -4,10 +4,18 @@ import fs from 'fs';
 
 import { toValeAST } from './lib.js';
 
+// Get the directory name of the current module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Read the version from package.json
+const packageJsonPath = path.join(__dirname, '../package.json');
+const { version } = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+
 const program = new Command();
 
 program
-    .version('1.0.0')
+    .version(version)
     .description('CLI to convert MDX to HTML while preserving JSX and expressions.')
     .argument('[file]', 'path to the MDX file to read')
     .action((file) => {
