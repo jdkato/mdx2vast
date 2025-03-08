@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "CLI to convert MDX to HTML while preserving JSX and expressions.",
     "bin": {
-        "mdx-to-vast": "./bin/cli.js"
+        "mdx-to-vast": "bin/cli.js"
     },
     "type": "module",
     "dependencies": {
