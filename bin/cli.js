@@ -9,7 +9,7 @@ const program = new Command();
 program
     .version('1.0.0')
     .description('CLI to convert MDX to HTML while preserving JSX and expressions.')
-    .argument('<file>', 'path to the MDX file to read')
+    .argument('[file]', 'path to the MDX file to read')
     .action((file) => {
         if (file) {
             if (fs.existsSync(file) && fs.statSync(file).isFile()) {
