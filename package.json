@@ -5,6 +5,21 @@
     "bin": {
         "mdx-to-vast": "bin/cli.js"
     },
+    "repository": "https://github.com/jdkato/mdx-to-vast",
+    "author": "jdkato",
+    "license": "MIT",
+    "engines": {
+        "node": ">=18"
+    },
+    "files": [
+        "bin/cli.js"
+    ],
+    "keywords": [
+        "mdx",
+        "html",
+        "jsx",
+        "vale"
+    ],
     "type": "module",
     "dependencies": {
         "@mdx-js/mdx": "^2.3.0",
