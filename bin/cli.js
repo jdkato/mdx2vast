@@ -11,17 +11,28 @@ program
     .description('CLI to convert MDX to HTML while preserving JSX and expressions.')
     .argument('<file>', 'path to the MDX file to read')
     .action((file) => {
-        if (fs.existsSync(file) && fs.statSync(file).isFile()) {
-            fs.readFile(file, 'utf8', (err, doc) => {
-                if (err) {
-                    console.error("Error reading the file:", err.message);
-                    process.exit(1);
-                }
-                console.log(toValeAST(doc));
-            });
+        if (file) {
+            if (fs.existsSync(file) && fs.statSync(file).isFile()) {
+                fs.readFile(file, 'utf8', (err, doc) => {
+                    if (err) {
+                        console.error("Error reading the file:", err.message);
+                        process.exit(1);
+                    }
+                    console.log(toValeAST(doc));
+                });
+            } else {
+                console.error('File does not exist or the path is incorrect.');
+                process.exit(1);
+            }
         } else {
-            console.error('File does not exist or the path is incorrect.');
-            process.exit(1);
+            let input = '';
+            process.stdin.setEncoding('utf8');
+            process.stdin.on('data', (chunk) => {
+                input += chunk;
+            });
+            process.stdin.on('end', () => {
+                console.log(toValeAST(input));
+            });
         }
     });
 
