@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
+import path from 'path';
+import getStdin from 'get-stdin';
 
 import { toValeAST } from './lib.js';
 
@@ -18,7 +21,7 @@ program
     .version(version)
     .description('CLI to convert MDX to HTML while preserving JSX and expressions.')
     .argument('[file]', 'path to the MDX file to read')
-    .action((file) => {
+    .action(async (file) => {
         if (file) {
             if (fs.existsSync(file) && fs.statSync(file).isFile()) {
                 fs.readFile(file, 'utf8', (err, doc) => {
@@ -33,14 +36,12 @@ program
                 process.exit(1);
             }
         } else {
-            let input = '';
-            process.stdin.setEncoding('utf8');
-            process.stdin.on('data', (chunk) => {
-                input += chunk;
-            });
-            process.stdin.on('end', () => {
-                console.log(toValeAST(input));
-            });
+            const input = await getStdin();
+            if (input.trim() === '') {
+                console.error('No input provided.');
+                process.exit(1);
+            }
+            console.log(toValeAST(input));
         }
     });
 
