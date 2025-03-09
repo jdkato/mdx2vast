@@ -1,6 +1,6 @@
-# mdx-to-vast
+# mdx2vast
 
-`mdx-to-vast` is a CLI tool that converts MDX files to HTML while preserving
+`mdx2vast` is a CLI tool that converts MDX files to HTML while preserving
 JSX syntax and components. This format (HTML that retains the structure of
 the original file) is used by [Vale][1] to provide markup-aware linting.
 
@@ -11,7 +11,7 @@ Ensure you have [Node.js](https://nodejs.org/) installed on your system.
 ### Install via `npm`:
 
 ```sh
-npm install -g mdx-to-vast
+npm install -g mdx2vast
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ npm install -g mdx-to-vast
 Run the CLI tool with the following command:
 
 ```sh
-mdx-to-vast input.mdx
+mdx2vast input.mdx
 ```
 
 [1]: https://vale.sh/
