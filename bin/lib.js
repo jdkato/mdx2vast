@@ -28,7 +28,7 @@ function createCustomHandler(doc) {
         } else if (mdxNodes.includes(node.type)) {
             const className = `mdxNode ${node.type}`
             if (source.includes('\n')) {
-                return h('pre', { className }, source)
+                return h('pre', h('code', { className }, source))
             } else {
                 return h('code', { className }, source)
             }
