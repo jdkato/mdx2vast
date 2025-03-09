@@ -13,19 +13,27 @@ const mdxNodes = [
     'mdxTextExpression'
 ]
 
+function isComment(source) {
+    return source.startsWith('{/*') && source.endsWith('*/}')
+}
+
 function createCustomHandler(doc) {
     return function customHandler(state, node, parent) {
-        if (mdxNodes.includes(node.type)) {
-            const source = doc.slice(
-                node.position.start.offset,
-                node.position.end.offset)
+        const start = node.position.start.offset
+        const end = node.position.end.offset
 
+        const source = doc.slice(start, end)
+        if (node.type === 'mdxFlowExpression' && isComment(source)) {
+            return { type: 'comment', value: source.slice(3, -3) }
+        } else if (mdxNodes.includes(node.type)) {
+            const className = `mdxNode ${node.type}`
             if (source.includes('\n')) {
-                return h('pre', { className: 'mdx-node' }, source)
+                return h('pre', { className }, source)
             } else {
-                return h('code', { className: 'mdx-node' }, source)
+                return h('code', { className }, source)
             }
         }
+
         return null
     }
 }

@@ -1,0 +1,80 @@
+<!-- vale off -->
+<p>This is some text ACT test</p>
+<p>This is some text ACT test</p>
+<!-- vale on -->
+<!-- vale vale.Redundancy = NO -->
+<p>This is some text ACT test</p>
+<!-- vale vale.Redundancy = YES -->
+<p>This is some text ACT test</p>
+<!-- vale demo.Ending-Preposition = NO -->
+<p>This is some text ACT test. This is a sentence for.</p>
+<p>This is a sentance of.</p>
+<!-- vale demo.Ending-Preposition = YES -->
+<p>This is a sentance of.</p>
+<ol>
+    <li>
+        <p>Consider the following <code>deployment.yaml</code> file.</p>
+        <pre><code class="language-yaml">apiVersion: v1
+                kind: Service
+                metadata:
+                name: my-nginx-svc
+                labels:
+                app: nginx
+                spec:
+                type: LoadBalancer
+                ports:
+                - port: 80
+                selector:
+                app: nginx
+                ---
+                apiVersion: apps/v1
+                kind: Deployment
+                metadata:
+                name: my-nginx
+                labels:
+                app: nginx
+                spec:
+                replicas: 3
+                selector:
+                matchLabels:
+                app: nginx
+                template:
+                metadata:
+                labels:
+                app: nginx
+                spec:
+                containers:
+                - name: nginx
+                image: nginx:1.7.9
+                ports:
+                - containerPort: 80
+            </code></pre>
+    </li>
+    <li>
+        <p>few other steps.</p>
+    </li>
+</ol>
+<!-- vale off -->
+<ol>
+    <li>This is a sentance of.
+        <pre><code class="language-bash">SSH should not typically be used within containers.
+                Ensure that non-SSH services are not using port 22.
+            </code></pre>
+    </li>
+</ol>
+<!-- vale on -->
+<p>something else.</p>
+<p>This is a sentance of.</p>
+<ul>
+    <li>Unordered list example.</li>
+</ul>
+<!-- vale off -->
+<ul>
+    <li>This is a sentance of.</li>
+</ul>
+<!-- vale on -->
+<ul>
+    <li>one more item.</li>
+</ul>
+<!-- vale demo.Raw = NO -->
+<p>Internal Links <a href="../index.html">must not use <code>.html</code></a></p>

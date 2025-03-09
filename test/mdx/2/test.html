@@ -1,28 +1,29 @@
 <h1>Hello, world!</h1>
-<pre class="mdx-node">import {External} from './some/place.js'
+<pre class="mdxNode mdxjsEsm">import {External} from './some/place.js'
     import {Chart} from './chart.js'
     import population from './population.js'</pre>
-<pre class="mdx-node">export const pi = 3.14
+<pre class="mdxNode mdxjsEsm">export const pi = 3.14
     export const Local = properties => &#x3C;span style={{color: 'red'}} {...properties} /></pre>
-<code class="mdx-node">&#x3C;Chart data={population} label={'Something with ' + pi} /></code>
-<p>An <code class="mdx-node">&#x3C;External>external&#x3C;/External></code> component and a <code
-        class="mdx-node">&#x3C;Local>local one&#x3C;/Local></code>.</p>
-<pre class="mdx-node">&#x3C;div className="note">
+<code class="mdxNode mdxJsxFlowElement">&#x3C;Chart data={population} label={'Something with ' + pi} /></code>
+<p>An <code class="mdxNode mdxJsxTextElement">&#x3C;External>external&#x3C;/External></code> component and a <code
+        class="mdxNode mdxJsxTextElement">&#x3C;Local>local one&#x3C;/Local></code>.</p>
+<pre class="mdxNode mdxJsxFlowElement">&#x3C;div className="note">
     > Some notable things in a block quote!
     &#x3C;/div></pre>
-<code class="mdx-node">&#x3C;Welcome name="Venus" /></code>
-<code class="mdx-node">&#x3C;Welcome name="Mars" /></code>
-<code class="mdx-node">&#x3C;MyComponent id="123" /></code>
+<code class="mdxNode mdxJsxFlowElement">&#x3C;Welcome name="Venus" /></code>
+<code class="mdxNode mdxJsxFlowElement">&#x3C;Welcome name="Mars" /></code>
+<code class="mdxNode mdxJsxFlowElement">&#x3C;MyComponent id="123" /></code>
 <p>You can also use objects with components, such as the <code>thisOne</code> component on
-    the <code>myComponents</code> object: <code class="mdx-node">&#x3C;myComponents.thisOne /></code></p>
-<pre class="mdx-node">&#x3C;Component
+    the <code>myComponents</code> object: <code class="mdxNode mdxJsxTextElement">&#x3C;myComponents.thisOne /></code>
+</p>
+<pre class="mdxNode mdxJsxFlowElement">&#x3C;Component
     open
     x={1}
     label={'this is a string, *not* markdown!'}
     icon={&#x3C;Icon />}
     /></pre>
-<p>Two 🍰 is: <code class="mdx-node">{Math.PI * 2}</code></p>
-<pre class="mdx-node">{(function () {
+<p>Two 🍰 is: <code class="mdxNode mdxTextExpression">{Math.PI * 2}</code></p>
+<pre class="mdxNode mdxFlowExpression">{(function () {
     const guess = Math.random()
 
     if (guess > 0.66) {
