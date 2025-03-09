@@ -6,6 +6,7 @@
         "mdx2vast": "bin/cli.js"
     },
     "repository": "https://github.com/jdkato/mdx2vast",
+    "homepage": "https://vale.sh/docs/formats/mdx",
     "author": "jdkato",
     "license": "MIT",
     "engines": {
