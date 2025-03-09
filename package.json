@@ -1,6 +1,6 @@
 {
     "name": "mdx2vast",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "CLI to convert MDX to HTML while preserving JSX and expressions.",
     "bin": {
         "mdx2vast": "bin/cli.js"
