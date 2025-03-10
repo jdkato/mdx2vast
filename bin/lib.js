@@ -1,3 +1,6 @@
+// TODO: Should we use `micromark-extension-mdx` instead? It's "non-JS aware,"
+// which is what we want, but it doesn't seem to recognize non-expression 
+// syntax (such as import statements).
 import { mdxjs } from 'micromark-extension-mdxjs'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { mdxFromMarkdown } from 'mdast-util-mdx'
