@@ -30,8 +30,10 @@
         "hast-util-to-html": "^9.0.5",
         "hastscript": "^9.0.1",
         "mdast-util-from-markdown": "^2.0.2",
+        "mdast-util-math": "^3.0.0",
         "mdast-util-mdx": "^3.0.0",
         "mdast-util-to-hast": "^13.2.0",
+        "micromark-extension-math": "^3.1.0",
         "micromark-extension-mdxjs": "^3.0.0",
         "path": "^0.12.7"
     },
