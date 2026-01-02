@@ -25,7 +25,6 @@
     "dependencies": {
         "@mdx-js/mdx": "^2.3.0",
         "commander": "^11.0.0",
-        "fs": "^0.0.1-security",
         "get-stdin": "^9.0.0",
         "hast-util-to-html": "^9.0.5",
         "hastscript": "^9.0.1",
