@@ -6,6 +6,7 @@ import path from 'path';
 import getStdin from 'get-stdin';
 
 import { toValeAST } from './lib.js';
+import { runBatch } from './batch.js';
 
 // Get the directory name of the current module
 const __filename = fileURLToPath(import.meta.url);
@@ -21,8 +22,17 @@ program
     .version(version)
     .description('CLI to convert MDX to HTML while preserving JSX and expressions.')
     .argument('[file]', 'path to the MDX file to read')
-    .action(async (file) => {
-        if (file) {
+    .option(
+        '--batch',
+        'convert many documents over one process, framed on stdin (see README)'
+    )
+    .action(async (file, options) => {
+        if (options.batch) {
+            // Importing the MDX toolchain costs ~160ms, and a caller with
+            // thousands of files pays it once per file. Batch mode pays it
+            // once, full stop.
+            await runBatch(process.stdin, process.stdout, toValeAST);
+        } else if (file) {
             if (fs.existsSync(file) && fs.statSync(file).isFile()) {
                 fs.readFile(file, 'utf8', (err, doc) => {
                     if (err) {
