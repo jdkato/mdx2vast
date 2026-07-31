@@ -96,3 +96,18 @@ test('Batch mode reports one failure and continues', async t => {
 
     t.deepEqual(statuses, ['err', 'ok']);
 });
+
+// A table has to reach Vale as a table. Rendered as a paragraph of pipes, the
+// punctuation gets linted as prose and `table.cell` matches nothing.
+test('GitHub-flavoured Markdown renders structurally', async t => {
+    const cli = path.join(__dirname, '../bin/cli.js');
+    const doc = path.join(mdxFolder, 'gfm', 'test.mdx');
+
+    const { stdout } = await execa('node', [cli, doc]);
+
+    t.true(stdout.includes('<table>'), 'table should be a table');
+    t.true(stdout.includes('<th>Flag</th>'), 'header cells should be header cells');
+    t.true(stdout.includes('<td>'), 'body cells should be body cells');
+    t.false(stdout.includes('| ----'), 'no delimiter row should survive as text');
+    t.true(stdout.includes('<del>struck</del>'), 'strikethrough should render');
+});

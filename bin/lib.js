@@ -5,6 +5,8 @@ import { mdxjs } from "micromark-extension-mdxjs";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { mathFromMarkdown } from "mdast-util-math";
 import { math } from "micromark-extension-math";
+import { gfm } from "micromark-extension-gfm";
+import { gfmFromMarkdown } from "mdast-util-gfm";
 import { mdxFromMarkdown } from "mdast-util-mdx";
 import { toHast } from "mdast-util-to-hast";
 import { h } from "hastscript";
@@ -45,8 +47,12 @@ function createCustomHandler(doc) {
 
 function toValeAST(doc) {
   const mdast = fromMarkdown(doc, {
-    extensions: [mdxjs(), math()],
-    mdastExtensions: [mdxFromMarkdown(), mathFromMarkdown()],
+    // GitHub-flavoured Markdown, so that a table is a table. Without it the
+    // rows arrive as one paragraph of pipe characters: Vale then lints the
+    // punctuation as prose and its `table.cell` scope never matches anything.
+    // Strikethrough and task lists come along for the same reason.
+    extensions: [mdxjs(), math(), gfm()],
+    mdastExtensions: [mdxFromMarkdown(), mathFromMarkdown(), gfmFromMarkdown()],
   });
 
   const customHandler = createCustomHandler(doc);
