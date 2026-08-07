@@ -1,8 +1,14 @@
 # mdx2vast
 
+> [!NOTE]
+> **Vale v3.18.0 and later parse MDX natively** and no longer use this tool.
+> `mdx2vast` remains available for earlier Vale versions, but it gets no new
+> features and can be uninstalled once you upgrade.
+
 `mdx2vast` is a CLI tool that converts MDX files to HTML while preserving
 JSX syntax and components. This format (HTML that retains the structure of
-the original file) is used by [Vale][1] to provide markup-aware linting.
+the original file) is used by [Vale][1] (before v3.18.0) to provide
+markup-aware linting.
 
 ## Installation
 
